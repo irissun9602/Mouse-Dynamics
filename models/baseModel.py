@@ -6,7 +6,9 @@ import tensorflow.keras as keras
 
 import config.settings as stt
 import config.constants as const
-
+import datetime
+from time import time
+from tensorflow.keras.callbacks import TensorBoard
 
 class BaseModel:
 
@@ -80,30 +82,19 @@ class BaseModel:
         # We use different parameters for UserRecognitionType values
         if stt.sel_user_recognition_type == stt.UserRecognitionType.AUTHENTICATION:
 
-            if stt.sel_model == stt.Model.CLASSIFIER_MCDCNN:
-                # Callback funtion for reducing learning rate
-                reduce_lr = keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=15, min_lr=0.0001)
-
-            if stt.sel_model == stt.Model.CLASSIFIER_FCN or stt.sel_model == stt.Model.CLASSIFIER_RESNET or stt.sel_model == stt.Model.CLASSIFIER_TCNN:
-                reduce_lr = keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=50, min_lr=0.0001)
-            
-            # Callback funtion for performing early stopping
+            reduce_lr = keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=50, min_lr=0.0001)
             es = keras.callbacks.EarlyStopping(monitor='loss', min_delta=0.01, patience=45, restore_best_weights=False, verbose=1)
 
-            # For visualizing train only
-            from time import time
-            import datetime
-            from tensorflow.keras.callbacks import TensorBoard
             log_dir = os.path.join("logs", datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
-            tensorboard = TensorBoard(log_dir=log_dir, profile_batch=0, update_freq='epoch')
+            tensorboard = TensorBoard(log_dir=log_dir, update_freq='epoch')
 
             self.callbacks = [reduce_lr, model_checkpoint, es, tensorboard]
 
         if stt.sel_user_recognition_type == stt.UserRecognitionType.IDENTIFICATION:
             reduce_lr = keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=50, min_lr=0.0001)
             es = keras.callbacks.EarlyStopping(monitor='loss', min_delta=0.01, patience=80, restore_best_weights=False, verbose=1)
-            #reduce_lr = keras.callbacks.ReduceLROnPlateau(monitor='loss', factor=0.5, patience=50, min_lr=0.0001)
             self.callbacks = [model_checkpoint, es, reduce_lr]
+
     
     
     def get_trained_model(self):

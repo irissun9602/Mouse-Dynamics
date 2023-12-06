@@ -12,8 +12,8 @@ dependencies:
   - ca-certificates=2020.1.1=0
   - certifi=2019.11.28=py37_0
   - colorama=0.4.3=py_0
-  - cudatoolkit=10.0.130=0
-  - cudnn=7.6.5=cuda10.0_0
+  - cudatoolkit=10.1
+  - cudnn=7.6
   - cycler=0.10.0=py_2
   - freetype=2.10.0=h563cfd7_1
   - gast=0.2.2=py37_0
@@ -66,11 +66,6 @@ dependencies:
   - setuptools=45.2.0=py37_0
   - six=1.14.0=py37_0
   - sqlite=3.31.1=he774522_0
-  - tensorboard=2.0.0=pyhb38c66f_1
-  - tensorflow=1.15.0=gpu_py37hc3743a6_0
-  - tensorflow-base=1.15.0=gpu_py37h1afeea4_0
-  - tensorflow-estimator=1.15.1=pyh2649769_0
-  - tensorflow-gpu=1.15.0=h0d30ee6_0
   - termcolor=1.1.0=py37_1
   - tornado=6.0.3=py37hfa6e2cd_3
   - vc=14.1=h0510ff6_4

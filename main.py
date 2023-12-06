@@ -15,10 +15,13 @@ rn.seed(sd)
 os.environ['PYTHONHASHSEED']=str(sd)
 
 from keras import backend as K
-config = tf.ConfigProto(intra_op_parallelism_threads=1,inter_op_parallelism_threads=1)
-tf.set_random_seed(sd)
-sess = tf.Session(graph=tf.get_default_graph(), config=config)
-K.set_session(sess)
+gpus = tf.config.list_physical_devices('GPU')
+if gpus:
+    try:
+        for gpu in gpus:
+            tf.config.experimental.set_memory_growth(gpu, True)
+    except RuntimeError as e:
+        print(e)
 
 #-----------------------------------------------------------------------#
 

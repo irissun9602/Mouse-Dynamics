@@ -34,7 +34,7 @@ USED_MODEL_FOR_OCC_FEATURE_EXTRACTION = 'dfl_2000_ResNet.hdf5'
 # Only needs if TRAIN_TEST_SPLIT_TYPE is TRAIN_AVAILABLE
 # If its value is between (0, 1) then represents the proportion of the dataset to include in the train split.
 # If int, represents the absolute number of train samples.
-TRAIN_TEST_SPLIT_VALUE = 70
+TRAIN_TEST_SPLIT_VALUE = 0.8
 
 
 # Defines the batch size for model training.
@@ -84,18 +84,18 @@ if stt.sel_dataset == stt.Dataset.BALABIT:
     STATELESS_TIME = 2
 
     # Test files path.
-    TEST_FILES_PATH = 'C:/Anaconda projects/Software_mod/MouseDynamics/test_files/'
+    TEST_FILES_PATH = r'C:\Users\user\Downloads\Mouse-Dynamics-Challenge-master\Mouse-Dynamics-Challenge-master\test_files'
 
     # Test labels path.
-    TEST_LABELS_PATH = 'C:/Anaconda projects/Software_mod/MouseDynamics/public_labels.csv'
+    TEST_LABELS_PATH = r'C:\Users\user\Downloads\Mouse-Dynamics-Challenge-master\Mouse-Dynamics-Challenge-master\public_labels.csv'
 
     # Training files path.
-    TRAIN_FILES_PATH = 'C:/Anaconda projects/Software_mod/MouseDynamics/training_files'
+    TRAIN_FILES_PATH = r'C:\Users\user\Downloads\Mouse-Dynamics-Challenge-master\Mouse-Dynamics-Challenge-master\training_files'
 
 
 if stt.sel_dataset == stt.Dataset.DFL:
-    TEST_FILES_PATH = 'C:/Anaconda projects/Software_mod/DFL'
-    TRAIN_FILES_PATH = 'C:/Anaconda projects/Software_mod/DFL'
+    TEST_FILES_PATH = r'C:\Users\user\Downloads\DFL'
+    TRAIN_FILES_PATH = r'C:\Users\user\Downloads\DFL'
     STATELESS_TIME = STATELESS_TIME * 1000
 
 

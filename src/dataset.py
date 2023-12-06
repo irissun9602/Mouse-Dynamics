@@ -893,7 +893,7 @@ class Dataset:
         dataset = np.ndarray(shape=(0, const.BLOCK_SIZE, 2), dtype=float)
         labels = np.ndarray(shape=(0, 1), dtype=int)
 
-        for session_path in glob(const.TEST_FILES_PATH + '/' + user + '/*'):
+        for session_path in glob(const.TEST_FILES_PATH + '\\' + user + '/*'):
             session_name = session_path[len(session_path) - 18 : ]
 
             # If the current session is labeled in public labels file

@@ -39,9 +39,7 @@ class Users(Enum):
 
     @staticmethod
     def get_dfl_users():
-        return ['User1', 'User2', 'User3', 'User4', 'User5', 'User6', 'User7', 'User8', 'User9', 'User10', 
-            'User11', 'User12', 'User13', 'User14', 'User15', 'User16', 'User17', 'User18', 'User19',
-            'User20', 'User21']
+        return ['User1']
 
     @staticmethod
     def get_sapimouse_users():
@@ -128,10 +126,11 @@ class OCCFeatures(Enum):
 # Block number from given user.
 # If its value is inf then reads all samples.
 # If int value is set, then BLOCK_NUM * BLOCK_SIZE rows will be read.
-BLOCK_NUM = 300
+BLOCK_NUM = 10
 
 
 # Defines the selected method.
+#sel_method = Method.TRAIN
 sel_method = Method.TRAIN
 
 
@@ -140,7 +139,7 @@ sel_model = Model.CLASSIFIER_RESNET
 
 
 # Defines used dataset.
-sel_dataset = Dataset.DFL
+sel_dataset = Dataset.BALABIT
 
 
 # Defines the selected recognition type.
@@ -170,7 +169,7 @@ sel_balance_type = DatasetBalanceType.POSITIVE
 # It is relevant only for authentication measurements.
 # BINARY_CLASSIFICATION uses CNN models
 # ONE_CLASS_CLASSIFICATION uses OCC models
-sel_authentication_type = AuthenticationType.ONE_CLASS_CLASSIFICATION
+sel_authentication_type = AuthenticationType.BINARY_CLASSIFICATION
 
 
 # Defines the input dataset type for OCC models. 
@@ -183,7 +182,7 @@ sel_chunck_samples_handler = ChunkSamplesHandler.DROP_CHUNKS
 
 # TRAIN_AVAILABLE means, that we have only train dataset.
 # TRAIN_TEST_AVAILABLE means, that we have both train and a separate test dataset.
-sel_dataset_type = DatasetType.TRAIN_AVAILABLE
+sel_dataset_type = DatasetType.TRAIN_TEST_AVAILABLE
 
 
 # Defines model training for single user or
@@ -201,7 +200,7 @@ use_pretrained_weights_for_training_model = False
 # It is used for TRANSFER_LEARNING.
 # If True, model weights will be trainable.
 # If False, model weights will be non-trainable.
-use_trainable_weights_for_transfer_learning = True
+use_trainable_weights_for_transfer_learning = False
 
 
 # Defines model evaluation for single user or
